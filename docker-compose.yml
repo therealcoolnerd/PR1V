@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  threat-db:
+    build:
+      context: .
+      dockerfile: priv/services/threat-db/Dockerfile
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+
+  zk-prover:
+    build:
+      context: .
+      dockerfile: priv/services/zk-prover/Dockerfile
+    ports:
+      - "3002:3002"
+    restart: unless-stopped
+
+  relayer:
+    build:
+      context: .
+      dockerfile: priv/services/relayer/Dockerfile
+    ports:
+      - "3003:3003"
+    restart: unless-stopped
