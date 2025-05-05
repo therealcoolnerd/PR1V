@@ -5,7 +5,7 @@
 If you believe you have found a security vulnerability or bug in this project:
 
 1. **Do not open a public issue.**
-2. Instead, email **nerdalertcomputersolutions@gmail.com** with:
+2. Instead, email **axeldrosenchrist@gmail.com** with:
    - A detailed description of the vulnerability.
    - Steps to reproduce the issue.
    - Any proof‑of‑concept code or screenshots.
