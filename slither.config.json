@@ -1,0 +1,5 @@
+{
+  "exclude": ["contracts/verifiers", "node_modules"],
+  "printer": "json",
+  "filter-paths": ["mocks"]
+}

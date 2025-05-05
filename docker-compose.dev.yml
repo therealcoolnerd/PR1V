@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: priv
+      POSTGRES_PASSWORD: priv
+      POSTGRES_DB: privdb
+    ports: ["5432:5432"]
+  anvil:
+    image: ghcr.io/foundry-rs/foundry:latest
+    command: anvil -p 8545
+    ports: ["8545:8545"]
+  threat-db:
+    build: priv/services/threat-db
+    environment:
+      DATABASE_URL: postgres://priv:priv@db:5432/privdb
+    depends_on: [db]
+    ports: ["3001:3001"]
+  zk-prover:
+    build: priv/services/zk-prover
+    ports: ["3002:3002"]
+  relayer:
+    build: priv/services/relayer
+    depends_on: [zk-prover]
+    ports: ["3003:3003"]
