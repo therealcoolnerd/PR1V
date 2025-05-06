@@ -3,15 +3,27 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "dev": "ts-node-dev --respawn index.ts",
+    "build": "tsc",
+    "serve": "node ../dist/services/zk-prover/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "express": "^4.18.2"
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^5.0.1",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "typescript": "^5.0.4",
-    "ts-node": "^10.9.1",
-    "@types/express": "^4.17.17",
-    "@types/node": "^18.16.0"
+    "ts-node-dev": "^2.0.0"
   }
 }
+
+Looking at your `package.json`, your dependencies are already quite up-to-date. However, I recommend adding a few scripts to make development easier:

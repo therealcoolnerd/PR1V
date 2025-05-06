@@ -3,7 +3,7 @@ services:
   threat-db:
     build:
       context: .
-      dockerfile: priv/services/threat-db/Dockerfile
+      dockerfile: services/threat-db/Dockerfile
     ports:
       - "3001:3001"
     restart: unless-stopped
@@ -11,7 +11,7 @@ services:
   zk-prover:
     build:
       context: .
-      dockerfile: priv/services/zk-prover/Dockerfile
+      dockerfile: services/zk-prover/Dockerfile
     ports:
       - "3002:3002"
     restart: unless-stopped
@@ -19,7 +19,7 @@ services:
   relayer:
     build:
       context: .
-      dockerfile: priv/services/relayer/Dockerfile
+      dockerfile: services/relayer/Dockerfile
     ports:
       - "3003:3003"
     restart: unless-stopped

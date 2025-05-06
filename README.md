@@ -1,28 +1,34 @@
-# Priv Privacy Suite
+# PR1V: Privacy Suite for Ethereum
 
-A blueprint for a web-based privacy suite with:
-- Wallet Scrubber
-- Secret Gift Sender
-- Private Send (Mixer)
+A comprehensive privacy toolkit for Ethereum, featuring:
+- **Wallet Scrubber**: Clean your transaction history
+- **Secret Gift Sender**: Send assets privately
+- **Private Send (Mixer)**: Shield your transfers
 
-## Structure
+## Architecture
 
-- `contracts/` - Solidity smart contracts
-- `circuits/` - Circom circuits
-- `services/` - Node.js microservices (Threat DB, ZK Prover, Relayer)
-- `frontend/` - Next.js frontend
-- `scripts/` - Deployment scripts
+PR1V consists of several components:
+- Smart contracts (Solidity)
+- ZK circuits (Circom)
+- Microservices (TypeScript/Node.js)
+  - Threat DB: Risk assessment for addresses and tokens
+  - ZK Prover: Generate zero-knowledge proofs
+  - Relayer: Submit transactions to the blockchain
 
-## TODOs
+## Development Setup
 
-- Complete contract logic and tests
-- Implement all service endpoints
-- Build frontend UI
-- Write deployment and integration scripts
+### Prerequisites
+- Node.js 18+
+- Docker and Docker Compose
+- Circom 2.0.0+
+- SnarkJS
 
-## Quick Start (local)
+### Installation
 
+1. Clone the repository:
 ```bash
+git clone https://github.com/therealcoolnerd/PR1V.git
+cd PR1V
 # start DB, local chain, and services
 docker-compose -f docker-compose.dev.yml up --build
 

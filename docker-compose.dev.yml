@@ -12,15 +12,15 @@ services:
     command: anvil -p 8545
     ports: ["8545:8545"]
   threat-db:
-    build: priv/services/threat-db
+    build: services/threat-db
     environment:
       DATABASE_URL: postgres://priv:priv@db:5432/privdb
     depends_on: [db]
     ports: ["3001:3001"]
   zk-prover:
-    build: priv/services/zk-prover
+    build: services/zk-prover
     ports: ["3002:3002"]
   relayer:
-    build: priv/services/relayer
+    build: services/relayer
     depends_on: [zk-prover]
     ports: ["3003:3003"]
