@@ -1,12 +1,9 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 
-const app = express();
+const router = express.Router();
 
-// Use built-in Express JSON middleware
-app.use(express.json());
-
-// Define route handlers without explicit type annotations
-app.post('/api/prove/gift-claim', (req, res) => {
+// Gift claim proof generation
+router.post('/gift-claim', (req: Request, res: Response) => {
     try {
         const { secret, randomNullifier, pathElements, pathIndices, root, recipient } = req.body;
         
@@ -33,10 +30,10 @@ app.post('/api/prove/gift-claim', (req, res) => {
     }
 });
 
-app.post('/api/prove/shield-withdraw', (req, res) => {
+// Shield withdraw proof generation
+router.post('/shield-withdraw', (req: Request, res: Response) => {
     // Placeholder implementation
     return res.status(501).json({ error: 'Not implemented yet' });
 });
 
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => console.log(`ZK-Prover running on ${PORT}`));
+export default router;
