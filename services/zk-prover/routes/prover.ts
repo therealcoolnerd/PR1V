@@ -1,15 +1,16 @@
-import express, { Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 
-const router = express.Router();
+const router = Router();
 
 // Gift claim proof generation
-router.post('/gift-claim', (req: Request, res: Response) => {
+router.post('/gift-claim', (req: Request, res: Response, next: NextFunction) => {
     try {
         const { secret, randomNullifier, pathElements, pathIndices, root, recipient } = req.body;
         
         // Validate inputs
         if (!secret || !randomNullifier || !pathElements || !pathIndices || !root || !recipient) {
-            return res.status(400).json({ error: 'Missing required parameters' });
+            res.status(400).json({ error: 'Missing required parameters' });
+            return; // Ensure no further code execution in this handler after sending response
         }
         
         // Here you would generate the proof using snarkjs
@@ -23,17 +24,20 @@ router.post('/gift-claim', (req: Request, res: Response) => {
             publicSignals: [root, "0x123", recipient]
         };
         
-        return res.json({ success: true, proof: mockProof });
+        res.json({ success: true, proof: mockProof });
     } catch (error) {
-        console.error('Error generating proof:', error);
-        return res.status(500).json({ error: 'Failed to generate proof' });
+        const err = error as Error;
+        console.error('Error generating proof in /gift-claim:', err.message);
+        // Pass error to the next error-handling middleware if you want centralized error handling
+        // For now, sending a direct response as before, but next(err) is an option.
+        res.status(500).json({ error: 'Failed to generate proof', message: err.message });
     }
 });
 
 // Shield withdraw proof generation
-router.post('/shield-withdraw', (req: Request, res: Response) => {
+router.post('/shield-withdraw', (req: Request, res: Response, next: NextFunction) => {
     // Placeholder implementation
-    return res.status(501).json({ error: 'Not implemented yet' });
+    res.status(501).json({ error: 'Not implemented yet' });
 });
 
 export default router;

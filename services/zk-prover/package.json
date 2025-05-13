@@ -15,9 +15,9 @@
   "description": "",
   "dependencies": {
     "@types/body-parser": "^1.19.5",
-    "@types/express": "^5.0.1",
+    "@types/express": "^4.17.21",
     "body-parser": "^2.2.0",
-    "express": "^5.1.0",
+    "express": "^4.19.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
@@ -25,5 +25,3 @@
     "ts-node-dev": "^2.0.0"
   }
 }
-
-Looking at your `package.json`, your dependencies are already quite up-to-date. However, I recommend adding a few scripts to make development easier:
